@@ -1,0 +1,2 @@
+# syouwa_heisei_meme_bot
+昭和後期・平成で流行ったフレーズやミームを呟くbot

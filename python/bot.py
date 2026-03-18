@@ -5,17 +5,17 @@ import os
 import tweepy
 
 # GitHub Secretsから認証情報を取得
-API_KEY = os.getenv("API_KEY")
-API_SECRET = os.getenv("API_SECRET")
-ACCESS_TOKEN = os.getenv("ACCESS_TOKEN")
-ACCESS_SECRET = os.getenv("ACCESS_SECRET")
+X_API_KEY = os.getenv("X_API_KEY")
+X_API_SECRET = os.getenv("X_API_SECRET")
+X_ACCESS_TOKEN = os.getenv("X_ACCESS_TOKEN")
+X_ACCESS_SECRET = os.getenv("X_ACCESS_SECRET")
 
 # 1. API v2 クライアントの作成 (Freeプランはこっちが必須)
 client = tweepy.Client(
-    consumer_key=API_KEY,
-    consumer_secret=API_SECRET,
-    access_token=ACCESS_TOKEN,
-    access_token_secret=ACCESS_SECRET
+    consumer_key=X_API_KEY,
+    consumer_secret=X_API_SECRET,
+    access_token=X_ACCESS_TOKEN,
+    access_token_secret=X_ACCESS_SECRET
 )
 
 def get_current_group_key():

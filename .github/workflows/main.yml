@@ -1,0 +1,37 @@
+name: Heisei Meme Bot
+
+on:
+  schedule:
+    # 毎時0分に実行 (UTC。日本時間では毎時9分など)
+    - cron: '0 * * * *'
+  workflow_dispatch: # 手動実行ボタンを有効化（テスト用）
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'
+
+      - name: Install dependencies
+        run: |
+          # ルート直下にある前提のrequirements.txtをインストール
+          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+          # または直接インストール（確実です）
+          pip install tweepy PyYAML
+
+      - name: Run bot
+        env:
+          # GitHubのSettings > Secretsで設定した値をプログラムに渡す
+          API_KEY: ${{ secrets.API_KEY }}
+          API_SECRET: ${{ secrets.API_SECRET }}
+          ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+          ACCESS_SECRET: ${{ secrets.ACCESS_SECRET }}
+        # フォルダ階層を指定して実行
+        run: python python/bot.py

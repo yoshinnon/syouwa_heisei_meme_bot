@@ -3,7 +3,7 @@ name: Heisei Meme Bot
 on:
   schedule:
     # 毎時0分に実行 (UTC。日本時間では毎時9分など)
-    - cron: '0 * * * *'
+    - cron: '30 * * * *'
   workflow_dispatch: # 手動実行ボタンを有効化（テスト用）
 
 jobs:

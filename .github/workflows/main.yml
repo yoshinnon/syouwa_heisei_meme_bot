@@ -9,27 +9,26 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Set up Python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v5
         with:
           python-version: '3.9'
 
       - name: Install dependencies
         run: |
-          # ルート直下にある前提のrequirements.txtをインストール
-          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
-          # または直接インストール（確実です）
           pip install tweepy PyYAML
 
       - name: Run bot
         env:
-          API_KEY: ${{ secrets.X_API_KEY }}
-          API_SECRET: ${{ secrets.X_API_SECRET }}
-          ACCESS_TOKEN: ${{ secrets.X_ACCESS_TOKEN }}
-          ACCESS_SECRET: ${{ secrets.X_ACCESS_SECRET }}
+          X_API_KEY: ${{ secrets.X_API_KEY }}
+          X_API_SECRET: ${{ secrets.X_API_SECRET }}
+          X_ACCESS_TOKEN: ${{ secrets.X_ACCESS_TOKEN }}
+          X_ACCESS_SECRET: ${{ secrets.X_ACCESS_SECRET }}
         run: python python/bot.py

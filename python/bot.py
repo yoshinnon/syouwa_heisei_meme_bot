@@ -10,7 +10,7 @@ X_API_SECRET = os.getenv("X_API_SECRET")
 X_ACCESS_TOKEN = os.getenv("X_ACCESS_TOKEN")
 X_ACCESS_SECRET = os.getenv("X_ACCESS_SECRET")
 
-# 1. API v2 クライアントの作成 (Freeプランはこっちが必須)
+# 1. API v2 クライアントの作成
 client = tweepy.Client(
     consumer_key=X_API_KEY,
     consumer_secret=X_API_SECRET,
